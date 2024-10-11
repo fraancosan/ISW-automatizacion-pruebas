@@ -8,47 +8,41 @@ function Form({ addTask }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validaciones
-    if (!name.trim() || !/^[a-zA-Z\s]+$/.test(name)){
-      Swal.fire('Error', 'El nombre debe ser un texto válido.', 'error');
-      return;
+    let errors = [];
+
+    // Validación de nombre
+    if (!name.trim() || !/^[a-zA-Z\s]+$/.test(name)) {
+        errors.push('El nombre debe ser un texto válido.');
     }
-    
+
+    // Validación de edad
     const ageNum = parseInt(age, 10);
     if (!/^\d+$/.test(age) || ageNum < 0) {
-      Swal.fire('Error', 'La edad debe ser un número entero no negativo.', 'error');
-      return;
+        errors.push('La edad debe ser un número entero no negativo.');
     }
 
-    if (!date) {
-      Swal.fire('Error', 'La fecha debe estar en formato correcto.', 'error');
-      return;
-    }
-
-    // Verificar que la fecha no sea menor que hoy
+    // Validación de fecha
     const selectedDate = new Date(date);
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     selectedDate.setHours(0, 0, 0, 0);
-    const selectedDateUTC = selectedDate.getTime();
-    const todayUTC = new Date(today).getTime();
-    if (selectedDateUTC < todayUTC)  {
-      Swal.fire('Error', 'La fecha de viaje no puede ser anterior a hoy.', 'error');
-      return;
+    if (selectedDate < today) {
+        errors.push('La fecha de viaje no puede ser anterior a hoy.');
     }
 
-    // Si todas las validaciones pasan, agregar el pasajero
-    addTask(name, ageNum, date);
-    
-    // Mostrar alerta positiva
-    Swal.fire('Éxito', 'Pasajero registrado correctamente.', 'success');
-
-    // Limpiar campos
-    setName('');
-    setAge('');
-    setDate('');
-  };
-
+    // Si hay errores, mostrar alerta
+    if (errors.length > 0) {
+        Swal.fire('Error', errors.join(' '), 'error');
+    } else {
+        // Si todas las validaciones pasan, agregar el pasajero
+        addTask(name, ageNum, date);
+        Swal.fire('Éxito', 'Pasajero registrado correctamente.', 'success');
+        // Limpiar campos
+        setName('');
+        setAge('');
+        setDate('');
+    }
+};
   return (
     <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
       <label htmlFor="task-name">Nombre del pasajero:</label>
