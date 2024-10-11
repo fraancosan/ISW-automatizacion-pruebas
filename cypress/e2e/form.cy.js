@@ -49,6 +49,30 @@ describe('Registro de pasajeros', () => {
     "antelacion": "-20",
     "mensaje": "La fecha de viaje no puede ser anterior a hoy.",
     "porcentaje": "75"
+  },
+  {
+    "titulo": "Caso 7",
+    "nombre": "Juan56",
+    "edad": "-25",
+    "antelacion": "20",
+    "mensaje": "El nombre debe ser un texto válido. La edad debe ser un número entero no negativo.",
+    "porcentaje": "75"
+  },
+  {
+    "titulo": "Caso 8",
+    "nombre": "Juan56",
+    "edad": "25",
+    "antelacion": "-20",
+    "mensaje": "El nombre debe ser un texto válido. La fecha de viaje no puede ser anterior a hoy.",
+    "porcentaje": "75"
+  },
+  {
+    "titulo": "Caso 9",
+    "nombre": "Juan56",
+    "edad": "-25",
+    "antelacion": "-20",
+    "mensaje": "El nombre debe ser un texto válido. La edad debe ser un número entero no negativo. La fecha de viaje no puede ser anterior a hoy.",
+    "porcentaje": "75"
   }]
 
   beforeEach(() => {
