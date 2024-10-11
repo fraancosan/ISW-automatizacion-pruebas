@@ -1,20 +1,62 @@
 describe('Descuentos', () => {
+let testData; 
+testData= [
+  {
+    "titulo": "0 %",
+    "nombre": "Juan",
+    "edad": "30",
+    "antelacion": "1",
+    "mensaje": "Pasajero registrado correctamente.",
+    "porcentaje": "0"
+  },
+  {
+    "titulo": "15 %",
+    "nombre": "Juan",
+    "edad": "35",
+    "antelacion": "15",
+    "mensaje": "Pasajero registrado correctamente.",
+    "porcentaje": "15"
+  }, 
+  {
+    "titulo": "25 %",
+    "nombre": "Juan",
+    "edad": "55",
+    "antelacion": "40",
+    "mensaje": "Pasajero registrado correctamente.",
+    "porcentaje": "25"
+  },
+  {
+    "titulo": "30 %",
+    "nombre": "Juan",
+    "edad": "15",
+    "antelacion": "2",
+    "mensaje": "Pasajero registrado correctamente.",
+    "porcentaje": "30"
+  },
+  {
+    "titulo": "40 %",
+    "nombre": "Juan",
+    "edad": "75",
+    "antelacion": "2",
+    "mensaje": "Pasajero registrado correctamente.",
+    "porcentaje": "40"
+  }];
+  
+  
   beforeEach(() => {
     cy.visit('localhost:3000'); 
   });
 
-  it('Descuento 0%', () => {
-    cy.get('#task-name').type('Juan');
-    cy.get('#age').type('30');
+  testData.forEach((data)=>{
+    it(`Descuento - ${data.titulo}`, () => {
+    cy.get('#task-name').type(data.nombre);
+    cy.get('#age').type(data.edad);
     const futureDate = new Date();
-    futureDate.setDate(futureDate.getDate() + 1); 
+    futureDate.setDate(futureDate.getDate() + parseInt(data.antelacion)); 
     cy.get('#date').type(futureDate.toISOString().split('T')[0]);
     cy.get('button[type="submit"]').click();
     
-    cy.on('window:alert', (text) => {
-      expect(text).to.contains('Pasajero registrado correctamente.');
-      return true; 
-    });
+    cy.get('[class="swal2-html-container"]').contains('Pasajero registrado correctamente.')
     cy.get('.swal2-confirm').click();
     
     cy.get('#task-name').should('have.value', '');
@@ -23,114 +65,11 @@ describe('Descuentos', () => {
 
     cy.get('li.todo').last().find('button.btn__edit').click();
     // Verificando que se muestra la alerta del descuento
-    cy.on('window:alert', (text) => {
-      expect(text).to.contains('El descuento es de: 0 %');
-    });
+    cy.get('[class="swal2-html-container"]').contains(`El descuento es de: ${data.porcentaje} %`)
+    
     cy.get('.swal2-confirm').click();
   });
+  })
 
-  it('Descuento 15%', () => {
-    cy.get('#task-name').type('Juan');
-    cy.get('#age').type('30');
-    const futureDate = new Date();
-    futureDate.setDate(futureDate.getDate() + 15); 
-    cy.get('#date').type(futureDate.toISOString().split('T')[0]);
-    cy.get('button[type="submit"]').click();
-    
-    cy.on('window:alert', (text) => {
-      expect(text).to.contains('Pasajero registrado correctamente.');
-      return true; 
-    });
-    cy.get('.swal2-confirm').click();
-    
-    cy.get('#task-name').should('have.value', '');
-    cy.get('#age').should('have.value', '');
-    cy.get('#date').should('have.value', '');
-
-    cy.get('li.todo').last().find('button.btn__edit').click();
-    // Verificando que se muestra la alerta del descuento
-    cy.on('window:alert', (text) => {
-      expect(text).to.contains('El descuento es de: 15 %');
-    });
-    cy.get('.swal2-confirm').click();
-  });  
-
-  it('Descuento 25%', () => {
-    cy.get('#task-name').type('Juan');
-    cy.get('#age').type('30');
-    const futureDate = new Date();
-    futureDate.setDate(futureDate.getDate() + 30); 
-    cy.get('#date').type(futureDate.toISOString().split('T')[0]);
-    cy.get('button[type="submit"]').click();
-    
-    cy.on('window:alert', (text) => {
-      expect(text).to.contains('Pasajero registrado correctamente.');
-      return true; 
-    });
-    cy.get('.swal2-confirm').click();
-    
-    cy.get('#task-name').should('have.value', '');
-    cy.get('#age').should('have.value', '');
-    cy.get('#date').should('have.value', '');
-
-    cy.get('li.todo').last().find('button.btn__edit').click();
-    // Verificando que se muestra la alerta del descuento
-    cy.on('window:alert', (text) => {
-      expect(text).to.contains('El descuento es de: 25 %');
-    });
-    cy.get('.swal2-confirm').click();
-  });  
-
-  it('Descuento 30% ', () => {
-    cy.get('#task-name').type('Juan');
-    cy.get('#age').type('15');
-    const futureDate = new Date();
-    futureDate.setDate(futureDate.getDate() + 3); 
-    cy.get('#date').type(futureDate.toISOString().split('T')[0]);
-    cy.get('button[type="submit"]').click();
-    
-    cy.on('window:alert', (text) => {
-      expect(text).to.contains('Pasajero registrado correctamente.');
-      return true; 
-    });
-    cy.get('.swal2-confirm').click();
-    
-    cy.get('#task-name').should('have.value', '');
-    cy.get('#age').should('have.value', '');
-    cy.get('#date').should('have.value', '');
-
-    cy.get('li.todo').last().find('button.btn__edit').click();
-    // Verificando que se muestra la alerta del descuento
-    cy.on('window:alert', (text) => {
-      expect(text).to.contains('El descuento es de: 25 %');
-    });
-    cy.get('.swal2-confirm').click();
-  });  
-
-it('Descuento 40% ', () => {
-    cy.get('#task-name').type('Juan');
-    cy.get('#age').type('80');
-    const futureDate = new Date();
-    futureDate.setDate(futureDate.getDate() + 3); 
-    cy.get('#date').type(futureDate.toISOString().split('T')[0]);
-    cy.get('button[type="submit"]').click();
-    
-    cy.on('window:alert', (text) => {
-      expect(text).to.contains('Pasajero registrado correctamente.');
-      return true; 
-    });
-    cy.get('.swal2-confirm').click();
-    
-    cy.get('#task-name').should('have.value', '');
-    cy.get('#age').should('have.value', '');
-    cy.get('#date').should('have.value', '');
-
-    cy.get('li.todo').last().find('button.btn__edit').click();
-    // Verificando que se muestra la alerta del descuento
-    cy.on('window:alert', (text) => {
-      expect(text).to.contains('El descuento es de: 40 %');
-    });
-    cy.get('.swal2-confirm').click();
-  });   
 })
 

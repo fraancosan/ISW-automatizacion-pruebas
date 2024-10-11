@@ -32,7 +32,7 @@ function calcularDescuento(age, dayDifference) {
         if (dayDifference >= 8 && dayDifference <= 30) {
             descuento = 15;
         } else if (dayDifference > 30) {
-            descuento = 20;
+            descuento = 25;
         }
     } else if (age >= 65) {
         descuento = 40;
