@@ -15,10 +15,11 @@ function usePrevious(value) {
 
 const calculateDaysDifference = (dateString) => {
   const today = new Date();
-  const todayDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  //const todayDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
   const date = new Date(dateString);
-  const inputDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-  const differenceInTime = inputDate.getTime() - todayDate.getTime();
+  //const inputDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  //const differenceInTime = inputDate.getTime() - todayDate.getTime();
+  const differenceInTime = date - today
   return Math.ceil(differenceInTime / (1000 * 3600 * 24));
 };
 

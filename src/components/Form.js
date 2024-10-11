@@ -24,8 +24,8 @@ function Form({ addTask }) {
     // Validación de fecha
     const selectedDate = new Date(date);
     const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    selectedDate.setHours(0, 0, 0, 0);
+    //today.setHours(0, 0, 0, 0);
+    //selectedDate.setHours(0, 0, 0, 0);
     if (selectedDate < today) {
         errors.push('La fecha de viaje no puede ser anterior a hoy.');
     }
