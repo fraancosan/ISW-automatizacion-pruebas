@@ -244,6 +244,67 @@ describe('Registro de pasajeros', () => {
   ]
 },
 {
+  "edad": "65",
+  "casos": [
+    {
+      "titulo": "Caso 1",
+      "nombre": "Juan",
+      "antelacion": "-1",
+      "mensaje": "La fecha de viaje no puede ser anterior a hoy.",
+      "porcentaje": "0"
+    },
+    {
+      "titulo": "Caso 2",
+      "nombre": "Juan",
+      "antelacion": "0",
+      "mensaje": "Pasajero registrado correctamente.",
+      "porcentaje": "40"
+    },
+    {
+      "titulo": "Caso 3",
+      "nombre": "Juan",
+      "antelacion": "6",
+      "mensaje": "Pasajero registrado correctamente.",
+      "porcentaje": "40"
+    },
+    {
+      "titulo": "Caso 4",
+      "nombre": "Juan",
+      "antelacion": "7",
+      "mensaje": "Pasajero registrado correctamente.",
+      "porcentaje": "40"
+    },
+    {
+      "titulo": "Caso 5",
+      "nombre": "Juan",
+      "antelacion": "29",
+      "mensaje": "Pasajero registrado correctamente.",
+      "porcentaje": "40"
+    },
+    {
+      "titulo": "Caso 6",
+      "nombre": "Juan",
+      "antelacion": "30",
+      "mensaje": "Pasajero registrado correctamente.",
+      "porcentaje": "40"
+    },
+    {
+      "titulo": "Caso 7",
+      "nombre": "Juan",
+      "antelacion": "a",
+      "mensaje": "La fecha de viaje no puede ser anterior a hoy.",
+      "porcentaje": "0"
+    },
+    {
+      "titulo": "Caso 8",
+      "nombre": "Juan",
+      "antelacion": "1.5",
+      "mensaje": "La fecha de viaje no puede ser anterior a hoy.",
+      "porcentaje": "0"
+    }
+  ]
+},
+{
   "edad": "66",
   "casos": [
     {

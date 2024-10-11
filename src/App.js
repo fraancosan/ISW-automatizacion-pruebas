@@ -27,14 +27,14 @@ function calcularDescuento(age, dayDifference) {
     // Determinamos el descuento basado en la edad
     if (age >= 0 && age < 25) {
         descuento = 30;
-    } else if (age >= 25 && age <= 65) {
+    } else if (age >= 25 && age < 65) {
         // Determinamos el descuento adicional según el día de diferencia
         if (dayDifference >= 8 && dayDifference <= 30) {
             descuento = 15;
         } else if (dayDifference > 30) {
             descuento = 25;
         }
-    } else if (age > 65) {
+    } else if (age >= 65) {
         descuento = 40;
     }
     return descuento;
