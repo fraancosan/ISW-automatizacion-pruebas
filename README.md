@@ -1,5 +1,7 @@
 # TRABAJO PRÁCTICO AUTOMATIZACION
 
+[Video con tests realizados](https://www.youtube.com/watch?v=PSJYdqDAwSE)
+
 ## Integrantes
 
 - Fina Gino
